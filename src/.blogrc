@@ -2,7 +2,7 @@
 
 BLOG_HOST="https://rcmorano.github.io"
 BLOG_TITLE="rcmorano's braindump"
-POSTS_PER_PAGE=10
+POSTS_PER_PAGE=16
 
 # This is your build directory
 DIST=../
