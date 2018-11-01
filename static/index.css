@@ -25,5 +25,5 @@ header a { text-decoration: none } header a:hover { color: #268bd2}
 .wrap { max-width: 1024px; margin: 0 auto; margin-right: 20%; }
 .in-next { opacity: 0.6; }
 .home { position:absolute; margin: 0 -1.25em 0; }
-footer { margin-top: 5ch; } footer a { color: inherit; }
+footer { font-size:.85em; max-width: 1024px; margin: 0 auto; font-size:.85em; margin-top: 5ch; } footer a { color: inherit; }
 footer span { font-size:.85em; color: #6f6f6f; }
