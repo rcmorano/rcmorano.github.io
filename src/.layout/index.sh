@@ -1,9 +1,44 @@
+#!/bin/bash
+
+# Break apart the LIST payload
+IFS='✂︎' read -r -a array <<< "$LIST"
+
+function index_loop {
+	for (( idx=${#array[@]}-1 ; idx>=0 ; idx-- )) ; do
+    [ "${array[idx]}" ] && eval "${array[idx]} list_item"
+  done
+}
+
+function list_item {
+  if [ -z "$BREAK" ]; then
+cat << _LOOP_
+  <li class="post-link"><a href="$(echo $POST_URL)"><span class="stamp">$(echo $POST_DATE)</span> <span class="title">$(echo $POST_TITLE)</span></a></li>
+_LOOP_
+  else
+cat << _LOOP_
+  <li class="post-link"><a href="/page/$(echo $BREAK).html">In page $(echo $BREAK)</a></li>
+_LOOP_
+  fi
+}
+
+function nav {
+	if [ "$PAGE_OLD" ] || [ "$PAGE_NEW" ]; then
+cat << _NAV_
+    <nav>
+			$([ "$PAGE_NEW" ] && echo "<a href=\"$PAGE_NEW\">← NEWER</a>")
+			$([ "$PAGE_OLD" ] && echo "<a href=\"$PAGE_OLD\">OLDER →</a>")
+		</nav>
+_NAV_
+	fi
+}
+
+cat << _EOF_
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>rcmorano's braindump</title>
+    <title>${BLOG_TITLE}</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAANjY2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARERERAAAAAAAAAAAAAAAAEQEBEQAAAAAAAAAAAAAAABEREREAAAAAAAAAAAAAAAARAREBAAAAAAAAAAAAAAAAEREBEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AADwDwAA//8AAPKPAAD//wAA8A8AAP//AADyLwAA//8AAPCPAAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
     <style>
@@ -30,10 +65,11 @@
     </style>
   </head>
   <body>
-    
+    $(if [ "$TAGNAME" ]; then echo "<header><a href=\"/tag/$TAGNAME\">TAG: $TAGNAME</a></header>"; fi)
     <ul class="posts">
-			  <li class="post-link"><a href="/post/hello-world.html"><span class="stamp">11/01</span> <span class="title">Aloha World</span></a></li>
+			$(index_loop)
     </ul>
-		
+		$(nav)
   </body>
 </html>
+_EOF_
