@@ -25,11 +25,11 @@
 <p>Here's an example of how to run a garbage collection job each 3 days at 0:00 since last change:</p>
 
 <ul>
-<li><em>/etc/cron.d/garbage-collect</em>:
-<code>
-0 0 * * * root RUN_EACH_DAYS=3; [ $((  $(( $(date +%-j) - $(stat -c %Y /etc/cron.d/garbage-collect | date +%j) )) % 3 )) == $RUN_EACH_DAYS ] &amp;&amp; do-some-stuff
-</code></li>
+<li><em>/etc/cron.d/garbage-collect</em>:</li>
 </ul>
+
+<div class="highlight"><pre lang="">0 0 * * * root RUN_EACH_DAYS=3; [ $((  $(( $(date +%-j) - $(stat -c %Y /etc/cron.d/garbage-collect | date +%j) )) % 3 )) == $RUN_EACH_DAYS ] && do-some-stuff
+</pre></div>
 
 <p>If you ever happen to change the frequency or the time the script runs at, it will execute again <em>the same day</em> and 3 days after that day.</p>
       <div class="tags"><a href="/tag/cron">cron</a>
