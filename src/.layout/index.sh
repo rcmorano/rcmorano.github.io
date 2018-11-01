@@ -46,11 +46,13 @@ cat << _EOF_
 $(envsubst < .templates/index-header.html > /dev/stdout)
 $($MARKDOWN_COMMAND .templates/index-header.md | envsubst > /dev/stdout)
   <body>
-    $(if [ "$TAGNAME" ]; then echo "<header><a href=\"/tag/$TAGNAME\">TAG: $TAGNAME</a></header>"; fi)
-    <ul class="posts">
-			$(index_loop)
-    </ul>
-		$(nav)
+    <div class="wrap">
+      $(if [ "$TAGNAME" ]; then echo "<header><a href=\"/tag/$TAGNAME\">TAG: $TAGNAME</a></header>"; fi)
+      <ul class="posts">
+  			$(index_loop)
+      </ul>
+  		$(nav)
+    </div>
   </body>
 <footer>
 $($MARKDOWN_COMMAND .templates/index-footer.md | envsubst > /dev/stdout)
