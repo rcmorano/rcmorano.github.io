@@ -52,6 +52,8 @@ $($MARKDOWN_COMMAND .templates/index-header.md | envsubst > /dev/stdout)
     </ul>
 		$(nav)
   </body>
+<footer>
 $($MARKDOWN_COMMAND .templates/index-footer.md | envsubst > /dev/stdout)
+</footer>
 </html>
 _EOF_
