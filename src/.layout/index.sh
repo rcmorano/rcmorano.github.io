@@ -18,7 +18,7 @@ function index_loop {
 }
 
 function list_item {
-#  if [ -z "$BREAK" ]; then
+  if [ -z "$BREAK" ]; then
 cat << _LOOP_
   <li class="post-link"><a href="$(echo $POST_URL)"><span class="stamp">$(get-my-date-format $POST_DATE_RFC822)</span> <span class="title">$(echo $POST_TITLE)</span></a></li>
 _LOOP_
@@ -26,7 +26,7 @@ _LOOP_
 #cat << _LOOP_
 #  <li class="post-link"><a href="/page/$(echo $BREAK).html">In page $(echo $BREAK)</a></li>
 #_LOOP_
-#  fi
+  fi
 }
 
 function nav {

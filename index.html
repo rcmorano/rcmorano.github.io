@@ -18,7 +18,14 @@
         height: 100%;
       }
       a { color: inherit; }
-      .posts { list-style: none; padding: 0; margin-left: auto; margin-right: auto; line-height: 2.5ch; }
+      <!-- .posts { position: relative; list-style: none; margin-left: auto; margin-right: auto; line-height: 2.5ch; } -->
+      .posts { 
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+      }
       .post-link { display: table; text-transform: uppercase; margin-bottom: .55em; }
       .post-link a { text-decoration: none; }
       .post-link .title:hover {  text-decoration: underline;  }
@@ -44,7 +51,6 @@
     
     <ul class="posts">
 			  <li class="post-link"><a href="/post/post9.html"><span class="stamp">20181101</span> <span class="title">post9</span></a></li>
-  <li class="post-link"><a href=""><span class="stamp">20181101</span> <span class="title"></span></a></li>
   <li class="post-link"><a href="/post/post8.html"><span class="stamp">20181101</span> <span class="title">post8</span></a></li>
   <li class="post-link"><a href="/post/post7.html"><span class="stamp">20181101</span> <span class="title">post7</span></a></li>
   <li class="post-link"><a href="/post/post6.html"><span class="stamp">20181101</span> <span class="title">post6</span></a></li>

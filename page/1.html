@@ -18,7 +18,14 @@
         height: 100%;
       }
       a { color: inherit; }
-      .posts { list-style: none; padding: 0; margin-left: auto; margin-right: auto; line-height: 2.5ch; }
+      <!-- .posts { position: relative; list-style: none; margin-left: auto; margin-right: auto; line-height: 2.5ch; } -->
+      .posts { 
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+      }
       .post-link { display: table; text-transform: uppercase; margin-bottom: .55em; }
       .post-link a { text-decoration: none; }
       .post-link .title:hover {  text-decoration: underline;  }
