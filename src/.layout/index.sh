@@ -2,14 +2,9 @@
 
 # Break apart the LIST payload
 IFS='✂︎' read -r -a array <<< "$LIST"
-MARKDOWN_COMMAND="awk -f /usr/local/share/jenny/lib/md2html.awk"
 
-function get-my-date-format {
+source .layout/functions.sh
 
-  POST_DATE_RFC822="$@"
-  echo $POST_DATE_RFC822 | date +%Y%m%d
-
-}
 
 function index_loop {
 	for (( idx=${#array[@]}-1 ; idx>=0 ; idx-- )) ; do
@@ -43,8 +38,10 @@ _NAV_
 # render header/footer markdown
 
 cat << _EOF_
-$(envsubst < .templates/index-header.html > /dev/stdout)
-$($MARKDOWN_COMMAND .templates/index-header.md | envsubst > /dev/stdout)
+<!DOCTYPE html>
+<html>
+  $(envsubst < .templates/index-header.html > /dev/stdout)
+  $($MARKDOWN_COMMAND .templates/index-header.md | envsubst > /dev/stdout)
   <body>
     <div class="wrap">
       $(if [ "$TAGNAME" ]; then echo "<header><a href=\"/tag/$TAGNAME\">TAG: $TAGNAME</a></header>"; fi)
@@ -54,8 +51,8 @@ $($MARKDOWN_COMMAND .templates/index-header.md | envsubst > /dev/stdout)
   		$(nav)
     </div>
   </body>
-<footer>
-$($MARKDOWN_COMMAND .templates/index-footer.md | envsubst > /dev/stdout)
-</footer>
+  <footer>
+  $($MARKDOWN_COMMAND .templates/index-footer.md | envsubst > /dev/stdout)
+  </footer>
 </html>
 _EOF_
