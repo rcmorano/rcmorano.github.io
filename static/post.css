@@ -25,7 +25,7 @@ article hr { border: 0; border-bottom: 3px solid #CCC; }
 .heading a { text-decoration: none; }
 .heading .title { color: rgb(11, 6, 52); display: inline-block; margin: 0 0 1em; font-weight:bold  }
 .heading .title:hover { text-decoration: underline; }
-.heading .stamp { color: #999; }
+.heading .stamp { color: #999; padding-right: 2ch; }
 .heading .stamp,
 .home { display: inline-block; width: 2.66em; text-align:right; margin-right: 1.5em; }
 .home { text-decoration: none; margin-bottom: 1.5em; text-align: left;  color: #cb4b16; } .home:hover { color: #dc322f; }
