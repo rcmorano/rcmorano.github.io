@@ -1,12 +1,12 @@
 # Run a *NIX cron job each N days
 
-There are many posts about this around the Internet, but I couldn't find any that explained how to run the job each N days *since job's last change*. 
+There are many posts about this around the Internet, but I couldn't find any that explained how to run the job each N days **since job's last change**. 
 
-Of course, for this approach to be useful, you will need to have granular cron job files in '/etc/cron.d'; which I found to be a good practice.
+Of course, for this approach to be useful, you will need to have granular cron job files in '/etc/cron.d'; which IMHO, it's a really good practice and eases its management.
 
 Here's an example of how to run a garbage collection job each 3 days at 0:00 since last change:
 
-- _/etc/cron.d/garbage-collect_:
+- Content of _/etc/cron.d/garbage-collect_:
 
 ```
 0 0 * * * root RUN_EACH_DAYS=3; [ $((  $(( $(date +%-j) - $(stat -c %Y /etc/cron.d/garbage-collect | date +%j) )) % 3 )) == $RUN_EACH_DAYS ] && do-some-stuff
