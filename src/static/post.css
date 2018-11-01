@@ -4,11 +4,11 @@
 }
 body {
   background-color: rgb(33, 6, 52);
-  color: #c1c1c1;
+  color: #a3690d;
   font-size: 16px;
   padding: 1em;
-  font-family: 'Overpass Mono', sans-serif;
-  line-height: 3ch;
+  font-family: 'Overpass Mono', monospace;
+  line-height: 1.75em;
 }
 @media (min-width: 760px) { body { font-size: 17px } }
 article { padding: 0; margin: 1.18em 0; max-width: 87ch; }
@@ -68,4 +68,4 @@ footer {
   margin: 0 auto;
 }
 footer a { color: inherit; }
-footer span { font-size:.85em; color: #6f6f6f; }
+footer span { font-size:.90em; color: #6f6f6f; }
