@@ -18,7 +18,7 @@ article blockquote { border-left: 1ch solid #313131; padding: 1.5ch 2ch; border-
 article blockquote,
 article pre { margin: 0; }
 article pre,
-article code { background-color: #2b2b2b; border-radius: 3px;  font-family: 'Fira Mono'; font-size: 12px; }
+article code { background-color: #2b2b2b; border-radius: 3px;  font-family: 'Fira Mono'; font-size: 0.75em; }
 article pre { word-break: break-all; display: inline-block; width: 100%; }
 article blockquote :first-of-type { margin-top: 0; }
 article blockquote :last-of-type { margin-bottom: 0; }
