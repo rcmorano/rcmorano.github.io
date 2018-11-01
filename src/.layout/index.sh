@@ -2,6 +2,14 @@
 
 # Break apart the LIST payload
 IFS='✂︎' read -r -a array <<< "$LIST"
+MARKDOWN_COMMAND="awk -f /usr/local/share/jenny/lib/md2html.awk"
+
+function get-my-date-format {
+
+  POST_DATE_RFC822="$@"
+  echo $POST_DATE_RFC822 | date +%Y%m%d
+
+}
 
 function index_loop {
 	for (( idx=${#array[@]}-1 ; idx>=0 ; idx-- )) ; do
@@ -12,7 +20,7 @@ function index_loop {
 function list_item {
   if [ -z "$BREAK" ]; then
 cat << _LOOP_
-  <li class="post-link"><a href="$(echo $POST_URL)"><span class="stamp">$(echo $POST_DATE)</span> <span class="title">$(echo $POST_TITLE)</span></a></li>
+  <li class="post-link"><a href="$(echo $POST_URL)"><span class="stamp">$(get-my-date-format $POST_DATE_RFC822)</span> <span class="title">$(echo $POST_TITLE)</span></a></li>
 _LOOP_
   else
 cat << _LOOP_
@@ -32,8 +40,11 @@ _NAV_
 	fi
 }
 
+# render header/footer markdown
+
 cat << _EOF_
-$(envsubst < .layout/index-header.html > /dev/stdout)
+$(envsubst < .templates/index-header.html > /dev/stdout)
+$($MARKDOWN_COMMAND .templates/index-header.md | envsubst > /dev/stdout)
   <body>
     $(if [ "$TAGNAME" ]; then echo "<header><a href=\"/tag/$TAGNAME\">TAG: $TAGNAME</a></header>"; fi)
     <ul class="posts">
@@ -41,5 +52,6 @@ $(envsubst < .layout/index-header.html > /dev/stdout)
     </ul>
 		$(nav)
   </body>
-$(envsubst < .layout/index-footer.html > /dev/stdout)
+$($MARKDOWN_COMMAND .templates/index-footer.md | envsubst > /dev/stdout)
+</html>
 _EOF_
