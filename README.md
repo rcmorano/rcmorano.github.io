@@ -7,3 +7,8 @@
 - git add ..
 - git ci -am"new post blablabla"
 - git push
+
+# TODO
+
+- Containerize
+  - Depends: grip

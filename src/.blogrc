@@ -14,7 +14,7 @@ STATIC_DIRS="static"
 LAYOUT_DIR=.layout
 
 # Use a custom Markdown command
-#MARKDOWN_COMMAND=
+MARKDOWN_COMMAND="mdown -i"
 
 # Commands to run after succesful build
 #function post_hook() {

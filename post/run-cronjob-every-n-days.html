@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>$(echo Aloha World) - Jenny</title>
+    <title>$(echo Run a *NIX cron job each N days) - Jenny</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAANjY2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARERERAAAAAAAAAAAAAAAAEQEBEQAAAAAAAAAAAAAAABEREREAAAAAAAAAAAAAAAARAREBAAAAAAAAAAAAAAAAEREBEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AADwDwAA//8AAPKPAAD//wAA8A8AAP//AADyLwAA//8AAPCPAAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
@@ -14,12 +14,30 @@
 <p>Find here my random thoughts and recipes. </p> -->
   <body>
     <article>
-    <div class="heading"><a href="/post/aloha-world.html"><span class="stamp">20181101</span> <span class="title">Aloha World</span></a></div>
+    <div class="heading"><a href="/post/run-cronjob-every-n-days.html"><span class="stamp">20181101</span> <span class="title">Run a *NIX cron job each N days</span></a></div>
       <a href="/" class="home">←</a><div class="contents">
       
 
-<p>Today I'm starting my braindump blog with the help of my friend <a href="https://github.com/hmngwy/jenny">Jenny</a>: static blog generator using bash, sed, and awk.</p>
-      <div class="tags"></div>
+<p>There are many posts about this around the Internet, but I couldn't find any that explained how to run the job each N days <em>since job's last change</em>. </p>
+
+<p>Of course, for this approach to be useful, you will need to have granular cron job files in '/etc/cron.d'; which I found to be a good practice.</p>
+
+<p>Here's an example of how to run a garbage collection job each 3 days at 0:00 since last change:</p>
+
+<ul>
+<li><em>/etc/cron.d/garbage-collect</em>:
+<code>
+0 0 * * * root RUN_EACH_DAYS=3; [ $((  $(( $(date +%-j) - $(stat -c %Y /etc/cron.d/garbage-collect | date +%j) )) % 3 )) == $RUN_EACH_DAYS ] &amp;&amp; do-some-stuff
+</code></li>
+</ul>
+
+<p>If you ever happen to change the frequency or the time the script runs at, it will execute again <em>the same day</em> and 3 days after that day.</p>
+      <div class="tags"><a href="/tag/cron">cron</a>
+<a href="/tag/job">job</a>
+<a href="/tag/every">every</a>
+<a href="/tag/days">days</a>
+<a href="/tag/linux">linux</a>
+<a href="/tag/unix">unix</a></div>
       </div>
     </article>
   </body>
