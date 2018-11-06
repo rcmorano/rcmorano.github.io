@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/rcmorano
+--------------------------------------------------------------------
+
+I hereby claim:
+
+* I am an admin of https://rcmorano.github.io
+* I am rcmorano (https://keybase.io/rcmorano) on keybase.
+* I have a public key ASBwO18twnFxYa7j8rn56PLF7YiUxuPbxzJVMdidmXEnnQo
+
+To do so, I am signing this object:
+
+{
+"body": {
+"key": {
+"eldest_kid": "0120703b5f2dc2717161aee3f2b9f9e8f2c5ed8894c6e3dbc7325531d89d9971279d0a",
+"host": "keybase.io",
+"kid": "0120703b5f2dc2717161aee3f2b9f9e8f2c5ed8894c6e3dbc7325531d89d9971279d0a",
+"uid": "953f040b0a03fac46a8458eec3a2ce19",
+"username": "rcmorano"
+},
+"merkle_root": {
+"ctime": 1541495771,
+"hash": "fc24c2be9a1e99ed6489bd97bf1982c030b848fbc7ee401fffd48351313e68157a4c2507c4de2b3a1a8a51ddbd7b9c5d3766a2862e5a17d755c487e01bb4fc95",
+"hash_meta": "b28f078a5b5fd1dbe19607ede5145ae4d117050ae3cc3db06426b01eeb1b9725",
+"seqno": 3902877
+},
+"service": {
+"entropy": "nRjWz0OqWlWhQGPc+b81027t",
+"hostname": "rcmorano.github.io",
+"protocol": "https:"
+},
+"type": "web_service_binding",
+"version": 2
+},
+"client": {
+"name": "keybase.io go client",
+"version": "2.8.0"
+},
+"ctime": 1541495779,
+"expire_in": 504576000,
+"prev": "98c2eb7f48cf0323e800faf6dc6117773869defc74e3b8c6a10bb5d5a946effd",
+"seqno": 6,
+"tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgcDtfLcJxcWGu4/K5+ejyxe2IlMbj28cyVTHYnZlxJ50Kp3BheWxvYWTESpcCBsQgmMLrf0jPAyPoAPr23GEXdzhp3vx047jGoQu11alG7/3EIIKMDz6ssvNMwdebGdQx222tGc8hd2vYJD6HNEWPF/XQAgHCo3NpZ8RAl+ZPGDYyV93GmmnoFtvVrcRrqawdCzjQXkD+SlKjxCFw9xiIEruGEkaNayiIpXPrYgqG4i7S1RgizRZ5nffBDqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIGC7c1UHWMwqnxf+3dK6LYqmL5cn27K3QNJPLpZ/i3Kuo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/rcmorano
+
+==================================================================
